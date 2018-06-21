@@ -1,6 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
-FROM jupyter/minimal-notebook
+FROM jupyter/r-notebook
 
 ENV SPLUNK_PRODUCT splunk
 ENV SPLUNK_VERSION 7.1.1
@@ -16,74 +16,31 @@ ENV SPLUNK_START_ARGS --accept-license --answer-yes
 
 LABEL maintainer="Jialong Hu <hjlhust@gmail.com>"
 
-USER root
-
-# R pre-requisites
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    fonts-dejavu \
-    tzdata \
-    gfortran \
-    gcc && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-USER $NB_UID
-
-# R packages
-RUN conda install --quiet --yes \
-    'r-base=3.4.1' \
-    'r-irkernel=0.8*' \
-    'r-plyr=1.8*' \
-    'r-devtools=1.13*' \
-    'r-tidyverse=1.1*' \
-    'r-shiny=1.0*' \
-    'r-rmarkdown=1.8*' \
-    'r-forecast=8.2*' \
-    'r-rsqlite=2.0*' \
-    'r-reshape2=1.4*' \
-    'r-nycflights13=0.2*' \
-    'r-caret=6.0*' \
-    'r-rcurl=1.95*' \
-    'r-crayon=1.3*' \
-    'r-randomforest=4.6*' \
-    'r-htmltools=0.3*' \
-    'r-sparklyr=0.7*' \
-    'r-htmlwidgets=1.0*' \
-    'r-hexbin=1.27*' && \
-    conda clean -tipsy && \
-fix-permissions $CONDA_DIR
-
-# python packages
-RUN yes | pip install --upgrade pip 
-RUN yes | pip install --quiet --no-cache-dir \
-	'lxml==4.2.*' \
-	'tushare==1.2.*' \
-	'pandas==0.23.*' \
-	'datetime==4.*' \
-	'time==1.0.*'
-
 # add splunk:splunk user
 RUN groupadd -r ${SPLUNK_GROUP} \
     && useradd -r -m -g ${SPLUNK_GROUP} ${SPLUNK_USER}
 
 # make the "en_US.UTF-8" locale so splunk will be utf-8 enabled by default
-RUN apt-get update  && apt-get install -y --no-install-recommends apt-utils && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update  \
+	&& apt-get install -y --no-install-recommends apt-utils \
+	&& apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
 	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
 
 # pdfgen dependency
-RUN apt-get update && apt-get install -y libgssapi-krb5-2 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+	&& apt-get install -y libgssapi-krb5-2 \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Download official Splunk release, verify checksum and unzip in /opt/splunk
 # Also backup etc folder, so it will be later copied to the linked volume
-# Copy partnerkit file to /tmp
-COPY ./${SPLUNK_FILENAME} /tmp
 
-RUN apt-get update && apt-get install -y wget sudo \
-#    && mkdir -p ${SPLUNK_HOME} \
-#    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME} \
-#    && wget -qO /tmp/${SPLUNK_FILENAME}.md5 https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}.md5 \
-#    && (cd /tmp && md5sum -c ${SPLUNK_FILENAME}.md5) \
+RUN apt-get update \
+	&& apt-get install -y wget sudo \
+    && mkdir -p ${SPLUNK_HOME} \
+    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME} \
+    && wget -qO /tmp/${SPLUNK_FILENAME}.md5 https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}.md5 \
+    && (cd /tmp && md5sum -c ${SPLUNK_FILENAME}.md5) \
     && tar xzf /tmp/${SPLUNK_FILENAME} --strip 1 -C ${SPLUNK_HOME} \
     && rm /tmp/${SPLUNK_FILENAME} \
     && rm /tmp/${SPLUNK_FILENAME}.md5 \
@@ -98,6 +55,8 @@ RUN apt-get update && apt-get install -y wget sudo \
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod +x /sbin/entrypoint.sh
 
+RUN chmod +x /usr/local/bin/start-notebook.sh
+
 # Copy new license
 #COPY ./Splunk_Enterprise_Q3FY17.lic /var/opt/splunk/etc/licenses/download-trial/Splunk_Enterprise_Q3FY17.lic
 
@@ -107,7 +66,7 @@ EXPOSE 8000/tcp 8089/tcp 8191/tcp 9997/tcp 1514 8088/tcp
 WORKDIR /opt/splunk
 
 # Configurations folder, var folder for everything (indexes, logs, kvstore)
-VOLUME [ "/opt/splunk/etc", "/opt/splunk/var" ]
+VOLUME [ "/opt/splunk/etc", "/opt/splunk/var", "/home/jovyan/work" ]
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 CMD ["start-service"]

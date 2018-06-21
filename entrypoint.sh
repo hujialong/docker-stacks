@@ -153,3 +153,5 @@ elif [ "$1" = 'splunk-bash' ]; then
 else
   "$@"
 fi
+
+/usr/local/bin/start-notebook.sh &
