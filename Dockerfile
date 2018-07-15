@@ -169,12 +169,12 @@ RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
 USER $NB_UID
 
 # Install Splunk-sdk and required packages
-RUN pip2 install splunk-sdk
-RUN pip2 install pandas
-RUN pip2 install lxml
-RUN pip2 install install tushare
-RUN pip2 install missingno
-RUN pip2 install sklearn
+RUN $CONDA_DIR/envs/python2/bin/pip install splunk-sdk
+RUN $CONDA_DIR/envs/python2/bin/pip install pandas
+RUN $CONDA_DIR/envs/python2/bin/pip install lxml
+RUN $CONDA_DIR/envs/python2/bin/pip install install tushare
+RUN $CONDA_DIR/envs/python2/bin/pip install missingno
+RUN $CONDA_DIR/envs/python2/bin/pip install sklearn
 
 # Install rqalpha and required packages
 RUN pip install bcolz==1.2.0 -i https://pypi.douban.com/simple
