@@ -1,7 +1,1 @@
-# docker-datascience
-
-- Jupyter Notebook
-
-- Splunk-sdk for Python
-
-- RQAlpha
+# personal docker-stacks
