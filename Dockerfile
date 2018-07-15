@@ -1,6 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
-FROM jupyter:r-notebook
+FROM jupyter/r-notebook
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
