@@ -4,6 +4,4 @@ if [ -z $CURRENT ]; then
 fi
 
 docker build --no-cache=true -t hjlhust/datascience:1.0.0 .
-docker tag hujl/datascience:1.0.0 hjlhust/datascience:latest
-
-
+docker tag hjlhust/datascience:1.0.0 hjlhust/datascience:latest
