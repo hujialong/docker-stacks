@@ -179,7 +179,7 @@ RUN $CONDA_DIR/envs/python2/bin/pip install sklearn
 
 # Install rqalpha and required packages
 RUN pip install bcolz==1.2.0 -i https://pypi.douban.com/simple
-RUN pip pip install rqalpha -i https://pypi.douban.com/simple
+RUN pip install rqalpha -i https://pypi.douban.com/simple
 
 USER root
 
