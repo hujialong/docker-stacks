@@ -169,6 +169,7 @@ RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install && \
 USER $NB_UID
 
 # Install Splunk-sdk and required packages
+RUN $CONDA_DIR/envs/python2/bin/pip install --upgrade pip
 RUN $CONDA_DIR/envs/python2/bin/pip install splunk-sdk
 RUN $CONDA_DIR/envs/python2/bin/pip install pandas
 RUN $CONDA_DIR/envs/python2/bin/pip install lxml
