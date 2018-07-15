@@ -186,6 +186,9 @@ USER root
 EXPOSE 8888
 WORKDIR $HOME
 
+# Configurations folder, var folder for everything (indexes, logs, kvstore)
+VOLUME [ "/home/hujl/work" ]
+
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
