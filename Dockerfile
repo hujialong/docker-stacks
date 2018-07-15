@@ -199,6 +199,10 @@ COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
+RUN chmod a+x /usr/local/bin/start.sh
+RUN chmod a+x /usr/local/bin/start-notebook.sh
+RUN chmod a+x /usr/local/bin/start-singleuser.sh
+RUN chmod a+x /etc/jupyter/jupyter_notebook_config.py
 
 # Switch back to hujl to avoid accidental container runs as root
 USER $NB_UID
