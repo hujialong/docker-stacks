@@ -12,7 +12,8 @@ RUN apt-get update \
     fonts-dejavu \
     tzdata \
     gfortran \
-    && gcc && apt-get clean \
+    gcc \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
