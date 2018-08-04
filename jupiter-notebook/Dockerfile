@@ -1,5 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
+# jupyter Notebook 
 FROM hjlhust/debian
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
