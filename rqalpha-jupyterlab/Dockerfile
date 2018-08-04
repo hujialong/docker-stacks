@@ -8,7 +8,7 @@ USER $NB_UID
 
 # Install rqalpha and required packages
 RUN pip install --upgrade pip
-RUN pip install -y \
+RUN pip install  \
     bcolz==1.2.0 \
     rqalpha \
     pandas \
