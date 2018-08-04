@@ -1,5 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
+# Debian :9.4
 FROM debian:latest
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
