@@ -1,6 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
-FROM hjlhust/r-jupyterlab
+FROM hjlhust/jupyterlab
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
