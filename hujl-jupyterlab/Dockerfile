@@ -22,7 +22,7 @@ USER $NB_UID
 
 # Install Splunk-sdk and required packages
 RUN $CONDA_DIR/envs/python2/bin/pip install --upgrade pip
-RUN $CONDA_DIR/envs/python2/bin/pip install -y \
+RUN $CONDA_DIR/envs/python2/bin/pip install \
     splunk-sdk \
     pandas \
     lxml \
