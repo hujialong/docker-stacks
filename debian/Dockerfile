@@ -45,9 +45,9 @@ RUN apt-get update -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN locale-gen en_US.UTF-8 \
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+    && locale-gen \
     && mkdir -p /hjlhust && chmod 777 /hjlhust
-ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
