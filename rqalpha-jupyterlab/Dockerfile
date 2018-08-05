@@ -7,12 +7,12 @@ LABEL maintainer="hujialong <hjlhust@gmail.com>"
 USER $NB_UID
 
 # Install rqalpha and required packages
-RUN pip install --upgrade pip
+RUN pip install -U pip setuptools cython
 RUN pip install  \
     bcolz==1.2.0 \
-    rqalpha \
     pandas \
     lxml \
     tushare \
     missingno \
-    klearn
+    klearn \
+    && pip install -i https://pypi.douban.com/simple rqalpha
