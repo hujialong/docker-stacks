@@ -20,3 +20,7 @@ RUN pip install  \
     missingno \
     klearn \
     && pip install -i https://pypi.douban.com/simple rqalpha
+
+# Get data bundle
+# Default save in ~/.rqalpha
+RUN rqalpha update_bundle
