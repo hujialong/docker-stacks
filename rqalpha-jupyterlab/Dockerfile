@@ -14,8 +14,6 @@ USER $NB_UID
 RUN pip install -U pip setuptools cython
 RUN pip install  \
     bcolz==1.2.0 \
-    pandas \
-    lxml \
     tushare \
     missingno \
     klearn \
