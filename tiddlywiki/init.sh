@@ -3,6 +3,16 @@
 # Distributed under the terms of the Modified BSD License.
 set -e
 
+# Environment Variables
+# Search path for ordinary plugins
+TIDDLYWIKI_PLUGIN_PATH=/var/lib/tiddlywiki/plugins
+# Search path for themes
+TIDDLYWIKI_THEME_PATH=/var/lib/tiddlywiki/themes
+# Search path for languages
+TIDDLYWIKI_LANGUAGE_PATH=/var/lib/tiddlywiki/languages
+# Search path for editions (used by the InitCommand)
+TIDDLYWIKI_EDITION_PATH=/var/lib/tiddlywiki/editions
+
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
 if [ -n "$NODE_MEM" ]; then
