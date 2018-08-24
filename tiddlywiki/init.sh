@@ -5,13 +5,13 @@ set -e
 
 # Environment Variables
 # Search path for ordinary plugins
-TIDDLYWIKI_PLUGIN_PATH=/var/lib/tiddlywiki/plugins
+export TIDDLYWIKI_PLUGIN_PATH=/var/lib/tiddlywiki/hujlwiki/plugins
 # Search path for themes
-TIDDLYWIKI_THEME_PATH=/var/lib/tiddlywiki/themes
+export TIDDLYWIKI_THEME_PATH=/var/lib/tiddlywiki/hujlwiki/themes
 # Search path for languages
-TIDDLYWIKI_LANGUAGE_PATH=/var/lib/tiddlywiki/languages
+export TIDDLYWIKI_LANGUAGE_PATH=/var/lib/tiddlywiki/hujlwiki/languages
 # Search path for editions (used by the InitCommand)
-TIDDLYWIKI_EDITION_PATH=/var/lib/tiddlywiki/editions
+export TIDDLYWIKI_EDITION_PATH=/var/lib/tiddlywiki/hujlwiki/editions
 
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
