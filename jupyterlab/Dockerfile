@@ -23,7 +23,7 @@ RUN conda install --quiet --yes \
     'conda-forge::blas=*=openblas' \
     'ipywidgets=7.2*' \
     'pandas=0.23*' \
-    'talib' \
+  #  'talib' \
     'numpy' \
     'lxml' \
     'numexpr=2.6*' \
