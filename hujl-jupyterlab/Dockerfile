@@ -4,6 +4,9 @@ FROM hjlhust/rqalpha-jupyterlab
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
+# Disable JupyterLab
+ENV JUPYTER_ENABLE_LAB=false
+
 USER $NB_UID
 
 # Create a Python 2.x environment using conda including at least the ipython kernel
