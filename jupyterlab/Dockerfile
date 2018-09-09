@@ -19,11 +19,12 @@ USER $NB_UID
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
 # use notebook-friendly backends in these images
+RUN conda config --append channels conda-forge
 RUN conda install --quiet --yes \
     'conda-forge::blas=*=openblas' \
     'ipywidgets=7.2*' \
     'pandas=0.23*' \
-    'conda-forge::talib' \
+    'talib' \
     'numpy' \
     'lxml' \
     'numexpr=2.6*' \
