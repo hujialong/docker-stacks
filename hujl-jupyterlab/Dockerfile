@@ -5,7 +5,7 @@ FROM hjlhust/rqalpha-jupyterlab
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
 # Disable JupyterLab
-ENV JUPYTER_ENABLE_LAB=false
+# ENV JUPYTER_ENABLE_LAB=false
 
 USER $NB_UID
 
