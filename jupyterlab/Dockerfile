@@ -61,7 +61,7 @@ RUN conda install --quiet --yes \
     && rm -rf /home/$NB_USER/.cache/yarn \
     && rm -rf /home/$NB_USER/.node-gyp \
     && fix-permissions $CONDA_DIR \
-    fix-permissions /home/$NB_USER
+    && fix-permissions /home/$NB_USER
 
 # Install facets which does not have a pip or conda package at the moment
 RUN cd /tmp \
