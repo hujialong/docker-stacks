@@ -8,7 +8,7 @@ LABEL maintainer="hujialong <hjlhust@gmail.com>"
 USER $NB_UID
 
 # Install conda as hujl and check the md5 sum provided on the download site
-ENV MINICONDA_VERSION latest
+ENV MINICONDA_VERSION 4.5.11
 RUN cd /tmp \
     && wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh \
     #&& echo "a946ea1d0c4a642ddf0c3a26a18bb16d *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - \
