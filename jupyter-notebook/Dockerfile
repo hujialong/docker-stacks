@@ -42,7 +42,7 @@ RUN conda install --quiet --yes \
     'jupyterhub' \
     'jupyterlab' \
     && conda clean -tipsy \
-    && jupyter labextension install @jupyterlab/hub-extension@^0.10.0 \
+    && jupyter labextension install @jupyterlab/hub-extension \
     && npm cache clean --force \
     && jupyter notebook --generate-config \
     && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
