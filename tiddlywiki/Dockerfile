@@ -8,8 +8,14 @@ LABEL maintainer="hujialong <hjlhust@gmail.com>"
 RUN npm install -g tiddlywiki
 
 # Setup wiki volume
-VOLUME /var/lib/tiddlywiki
-WORKDIR /var/lib/tiddlywiki
+VOLUME [ "/TiddlyWiki" ]
+WORKDIR /TiddlyWiki
+
+# Environment Variables
+TIDDLYWIKI_PLUGIN_PATH=/TiddlyWiki/plugins
+TIDDLYWIKI_THEME_PATH=/TiddlyWiki/themes
+TIDDLYWIKI_LANGUAGE_PATH=/TiddlyWiki/languages
+TIDDLYWIKI_EDITION_PATH=/TiddlyWiki/editions
 
 # Add init-and-run script
 ADD init.sh /usr/local/bin/init.sh
