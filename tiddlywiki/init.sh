@@ -5,13 +5,13 @@ set -e
 
 # Environment Variables
 # Search path for ordinary plugins
-export TIDDLYWIKI_PLUGIN_PATH=/app/TiddlyWiki/plugins
+export TIDDLYWIKI_PLUGIN_PATH=/TiddlyWiki/plugins
 # Search path for themes
-export TIDDLYWIKI_THEME_PATH=/app/TiddlyWiki/themes
+export TIDDLYWIKI_THEME_PATH=/TiddlyWiki/themes
 # Search path for languages
-export TIDDLYWIKI_LANGUAGE_PATH=/app/TiddlyWiki/languages
+export TIDDLYWIKI_LANGUAGE_PATH=/TiddlyWiki/languages
 # Search path for editions (used by the InitCommand)
-export TIDDLYWIKI_EDITION_PATH=/app/TiddlyWiki/editions
+export TIDDLYWIKI_EDITION_PATH=/TiddlyWiki/editions
 
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
@@ -20,7 +20,7 @@ if [ -n "$NODE_MEM" ]; then
     NODEJS_V8_ARGS="--max_old_space_size=$mem_node_old_space $NODEJS_V8_ARGS"
 fi
 
-if [ ! -f  "/TiddlyWiki/tiddlywiki.info" ]; then
+if [ ! -d  "/TiddlyWiki" ]; then
   /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --init server
 fi
 
