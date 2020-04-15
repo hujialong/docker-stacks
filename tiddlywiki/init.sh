@@ -22,7 +22,6 @@ fi
 
 if [ ! -d  "/Wikis/TiddlyWiki" ]; then
   /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --init server
-  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --build index
 fi
 
 exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --verbose --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-hujl} ${PASSWORD:-'wiki'} 0.0.0.0
