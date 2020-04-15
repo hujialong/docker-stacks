@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
-#set -e
+set -e
 
 # Environment Variables
 # Search path for ordinary plugins
@@ -13,7 +13,6 @@ export TIDDLYWIKI_LANGUAGE_PATH=/Wikis/TiddlyWiki/languages
 # Search path for editions (used by the InitCommand)
 export TIDDLYWIKI_EDITION_PATH=/Wikis/TiddlyWiki/editions
 
-
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
 if [ -n "$NODE_MEM" ]; then
@@ -22,7 +21,8 @@ if [ -n "$NODE_MEM" ]; then
 fi
 
 if [ ! -d  "/Wikis/TiddlyWiki" ]; then
-  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --build server
+  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --init server
+  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --build index
 fi
 
 exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --verbose --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-hujl} ${PASSWORD:-'wiki'} 0.0.0.0
