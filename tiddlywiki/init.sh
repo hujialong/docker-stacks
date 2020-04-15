@@ -5,17 +5,14 @@
 
 # Environment Variables
 # Search path for ordinary plugins
-#export TIDDLYWIKI_PLUGIN_PATH=/TiddlyWiki/plugins
+export TIDDLYWIKI_PLUGIN_PATH=/Wikis/TiddlyWiki/plugins
 # Search path for themes
-#export TIDDLYWIKI_THEME_PATH=/TiddlyWiki/themes
+export TIDDLYWIKI_THEME_PATH=/Wikis/TiddlyWiki/themes
 # Search path for languages
-#export TIDDLYWIKI_LANGUAGE_PATH=/TiddlyWiki/languages
+export TIDDLYWIKI_LANGUAGE_PATH=/Wikis/TiddlyWiki/languages
 # Search path for editions (used by the InitCommand)
-#export TIDDLYWIKI_EDITION_PATH=/TiddlyWiki/editions
-TIDDLYWIKI_PLUGIN_PATH=/Wikis/TiddlyWiki/plugins
-TIDDLYWIKI_THEME_PATH=/Wikis/TiddlyWiki/themes
-TIDDLYWIKI_LANGUAGE_PATH=/Wikis/TiddlyWiki/languages
-TIDDLYWIKI_EDITION_PATH=/Wikis/TiddlyWiki/editions
+export TIDDLYWIKI_EDITION_PATH=/Wikis/TiddlyWiki/editions
+
 
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
@@ -25,7 +22,7 @@ if [ -n "$NODE_MEM" ]; then
 fi
 
 if [ ! -d  "/Wikis/TiddlyWiki" ]; then
-  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --init server
+  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --build server
 fi
 
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-hujl} ${PASSWORD:-'wiki'} 0.0.0.0
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --verbose --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-hujl} ${PASSWORD:-'wiki'} 0.0.0.0
