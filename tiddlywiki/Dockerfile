@@ -8,8 +8,8 @@ LABEL maintainer="hujialong <hjlhust@gmail.com>"
 RUN npm install -g tiddlywiki
 
 # Setup wiki volume
-VOLUME [ "/TiddlyWiki" ]
-WORKDIR /TiddlyWiki
+VOLUME [ "/Wikis" ]
+WORKDIR /Wikis
 
 # Add init-and-run script
 ADD init.sh /usr/local/bin/init.sh

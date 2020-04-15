@@ -12,10 +12,10 @@
 #export TIDDLYWIKI_LANGUAGE_PATH=/TiddlyWiki/languages
 # Search path for editions (used by the InitCommand)
 #export TIDDLYWIKI_EDITION_PATH=/TiddlyWiki/editions
-TIDDLYWIKI_PLUGIN_PATH=/TiddlyWiki/plugins
-TIDDLYWIKI_THEME_PATH=/TiddlyWiki/themes
-TIDDLYWIKI_LANGUAGE_PATH=/TiddlyWiki/languages
-TIDDLYWIKI_EDITION_PATH=/TiddlyWiki/editions
+TIDDLYWIKI_PLUGIN_PATH=/Wikis/TiddlyWiki/plugins
+TIDDLYWIKI_THEME_PATH=/Wikis/TiddlyWiki/themes
+TIDDLYWIKI_LANGUAGE_PATH=/Wikis/TiddlyWiki/languages
+TIDDLYWIKI_EDITION_PATH=/Wikis/TiddlyWiki/editions
 
 tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 
@@ -24,7 +24,7 @@ if [ -n "$NODE_MEM" ]; then
     NODEJS_V8_ARGS="--max_old_space_size=$mem_node_old_space $NODEJS_V8_ARGS"
 fi
 
-if [ ! -d  "/TiddlyWiki" ]; then
+if [ ! -d  "/Wikis/TiddlyWiki" ]; then
   /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script TiddlyWiki --init server
 fi
 
