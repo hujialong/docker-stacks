@@ -5,7 +5,7 @@ FROM node:alpine
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
 # Install tiddlywiki
-RUN npm install -g tiddlywiki@5.1.22
+RUN npm install -g tiddlywiki
 
 # Setup wiki volume
 VOLUME [ "/Wikis" ]

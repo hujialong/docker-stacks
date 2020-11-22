@@ -21,10 +21,13 @@ if [ -n "$NODE_MEM" ]; then
 fi
 
 if [ ! -d  "/Wikis/$WIKINAME" ]; then
-  /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $WIKINAME --init server
+  #/usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $WIKINAME --init server
+  /usr/bin/env node $tiddlywiki_script $WIKINAME --init server
+fi
 fi
 
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $WIKINAME --server \
+#exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $WIKINAME --server \
+exec /usr/bin/env node $tiddlywiki_script $WIKINAME --server \
 	"$PORT" \
 	"$ROOTTIDDLER" \
 	"$RENDERTYPE" \
