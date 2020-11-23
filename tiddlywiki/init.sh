@@ -20,8 +20,6 @@ if [ -n "$NODE_MEM" ]; then
     NODEJS_V8_ARGS="--max_old_space_size=$mem_node_old_space $NODEJS_V8_ARGS"
 fi
 
-NODEJS_V8_ARGS="--max_old_space_size=2048 $NODEJS_V8_ARGS"
-
 if [ ! -d  "/Wikis/$WIKINAME" ]; then
   /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script $WIKINAME --init server
 fi
