@@ -4,7 +4,6 @@ FROM node:alpine
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
 
-RUN apk add --no-cache tini
 # Install tiddlywiki
 RUN npm install -g tiddlywiki
 
@@ -29,4 +28,4 @@ ADD init.sh /usr/local/bin/init.sh
 RUN chmod a+x /usr/local/bin/init.sh
 
 # Meta
-CMD ["/sbin/tini", "--", "/usr/local/bin/init.sh"]
+CMD ["/usr/local/bin/init.sh"]

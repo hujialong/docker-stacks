@@ -18,7 +18,7 @@ tiddlywiki_script=$(readlink -f $(which tiddlywiki))
 if [ -n "$NODE_MEM" ]; then
     mem_node_old_space=$((($NODE_MEM*4)/5))
     #NODEJS_V8_ARGS="--max_old_space_size=$mem_node_old_space $NODEJS_V8_ARGS"
-    NODEJS_V8_ARGS="--max_old_space_size=2048 $NODEJS_V8_ARGS"
+    NODEJS_V8_ARGS="--max_old_space_size=3072 $NODEJS_V8_ARGS"
     export NODEJS_V8_ARGS
 fi
 
