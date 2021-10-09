@@ -1,5 +1,6 @@
 # Copyright (c) Jialong Hu.
 # Distributed under the terms of the Modified BSD License.
+# tiddwywiki 5.2.0
 FROM node:alpine
 
 LABEL maintainer="hujialong <hjlhust@gmail.com>"
